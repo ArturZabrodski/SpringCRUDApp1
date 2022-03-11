@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${page.getTitle()}"></title>
+</head>
+<body>
+
+<p th:text="${page.getTitle()}">VALUE</p>
+<p th:text="${page.getDescription()}">VALUE</p>
+<p th:text="${page.getPriority()}">VALUE</p>
+<p>
+    <time th:text="${page.getPublished_at()}"></time>
+</p>
+
+<hr/>
+<form th:method="PUT" th:action="@{/pages/{slug}(slug=${page.getSlug()})}" th:object="${page}">
+    <button>Publish page</button>
+</form>
+<br/>
+<form th:action="@{/pages/{slug}/edit(slug=${page.getSlug()})}" th:object="${page}">
+    <button>Edit page</button>
+</form>
+<br/>
+<form th:method="DELETE" th:action="@{/pages/{slug}(slug=${page.getSlug()})}">
+    <input type="submit" value="Delete page"/>
+</form>
+
+</body>
+</html>

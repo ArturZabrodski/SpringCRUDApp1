@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Content management system</title>
+</head>
+<body>
+
+<div th:each="page : ${pages}">
+    <a th:text="${page.getTitle()}" th:href="@{/pages/{slug}(slug=${page.getSlug()})}">VALUE</a>
+</div>
+
+<br/>
+<hr/>
+<form action="/pages/new">
+    <button>Create new page</button>
+</form>
+<br/>
+<form action="/pages">
+    <button>Show/Hide unpublished pages</button>
+</form>
+
+</body>
+</html>
