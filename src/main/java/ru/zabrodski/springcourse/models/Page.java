@@ -7,6 +7,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Page {
     private String slug;
@@ -19,8 +20,7 @@ public class Page {
     @Size(min = 10, message = "Description must be at least 10 characters")
     private String description;
 
-//    @DateTimeFormat
-    private LocalDate published_at;
+    private LocalDateTime published_at;
 
     @Min(value = 1, message = "Priority must be between 1 and 5")
     @Max(value = 5, message = "Priority must be between 1 and 5")
@@ -59,11 +59,11 @@ public class Page {
         this.description = description;
     }
 
-    public LocalDate getPublished_at() {
+    public LocalDateTime getPublished_at() {
         return published_at;
     }
 
-    public void setPublished_at(LocalDate published_at) {
+    public void setPublished_at(LocalDateTime published_at) {
         this.published_at = published_at;
     }
 

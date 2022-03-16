@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import ru.zabrodski.springcourse.models.Page;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Component
@@ -49,7 +50,7 @@ public class PageDAO {
     }
 
     public void publish(String slug, Page updatedPage) {
-        updatedPage.setPublished_at(LocalDate.now());
+        updatedPage.setPublished_at(LocalDateTime.now());
         jdbcTemplate.update("UPDATE Page SET published_at=? WHERE slug=?",
                 updatedPage.getPublished_at(),
                 slug);

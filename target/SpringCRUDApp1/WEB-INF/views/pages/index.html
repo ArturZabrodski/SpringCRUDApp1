@@ -7,7 +7,9 @@
 <body>
 
 <div th:each="page : ${pages}">
-    <a th:text="${page.getTitle()}" th:href="@{/pages/{slug}(slug=${page.getSlug()})}">VALUE</a>
+    <menu>
+        <li><a th:text="${page.getTitle()}" th:href="@{/pages/{slug}(slug=${page.getSlug()})}"></a></li>
+    </menu>
 </div>
 
 <br/>
