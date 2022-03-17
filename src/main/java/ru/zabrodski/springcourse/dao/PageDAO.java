@@ -18,11 +18,13 @@ public class PageDAO {
     }
 
     public List<Page> indexShow() {
-        return jdbcTemplate.query("SELECT * FROM Page ORDER BY Priority", new BeanPropertyRowMapper<>(Page.class));
+        return jdbcTemplate.query("SELECT * FROM Page ORDER BY Priority",
+                new BeanPropertyRowMapper<>(Page.class));
     }
 
     public List<Page> indexHide() {
-        return jdbcTemplate.query("SELECT * FROM Page WHERE published_at IS NOT NULL ORDER BY Priority", new BeanPropertyRowMapper<>(Page.class));
+        return jdbcTemplate.query("SELECT * FROM Page WHERE published_at IS NOT NULL ORDER BY Priority",
+                new BeanPropertyRowMapper<>(Page.class));
     }
 
     public Page show(String slug) {

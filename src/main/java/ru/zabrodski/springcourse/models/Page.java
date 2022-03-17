@@ -13,7 +13,6 @@ public class Page {
     private String slug;
 
     @NotEmpty(message = "Title must not be empty")
-    @Size(min = 1, message = "Title must be at least 1 character")
     private String title;
 
     @NotEmpty(message = "Description must not be empty")

@@ -11,8 +11,10 @@ import ru.zabrodski.springcourse.models.Page;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/pages")
+@RequestMapping()
 public class PageController {
+
+    private String url = "http://127.0.0.1:3000/";
 
     private final PageDAO pageDAO;
     private boolean buttonClick = true;
@@ -32,40 +34,40 @@ public class PageController {
             model.addAttribute("pages", pageDAO.indexShow());
         }
 
-        return "pages/index";
+        return "index";
     }
 
     @GetMapping("/{slug}")
     public String show(@PathVariable("slug") String slug, Model model) {
         model.addAttribute("page", pageDAO.show(slug));
-        return "pages/show";
+        return "show";
     }
 
     @GetMapping("/new")
     public String newPage(@ModelAttribute("page") Page page) {
-        return "pages/new";
+        return "new";
     }
 
     @PostMapping()
     public String create(@ModelAttribute("page") @Valid Page page,
                          BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "pages/new";
+            return "new";
         }
         pageDAO.save(page);
-        return "redirect:/pages";
+        return "redirect:/";
     }
 
     @GetMapping("/{slug}/edit")
     public String edit(Model model, @PathVariable("slug") String slug) {
         model.addAttribute("page", pageDAO.show(slug));
-        return "pages/edit";
+        return "edit";
     }
 
     @GetMapping("/{slug}/publish")
     public String publish(Model model, @PathVariable("slug") String slug) {
         model.addAttribute("page", pageDAO.show(slug));
-        return "redirect:/pages";
+        return "redirect:/";
     }
 
     @PatchMapping("/{slug}")
@@ -73,10 +75,10 @@ public class PageController {
                          BindingResult bindingResult,
                          @PathVariable("slug") String slug) {
         if (bindingResult.hasErrors()) {
-            return "pages/edit";
+            return "edit";
         }
         pageDAO.update(slug, page);
-        return "redirect:/pages";
+        return "redirect:/";
     }
 
     @PutMapping("/{slug}")
@@ -84,12 +86,12 @@ public class PageController {
                                 BindingResult bindingResult,
                                 @PathVariable("slug") String slug) {
         pageDAO.publish(slug, page);
-        return "redirect:/pages";
+        return "redirect:/";
     }
 
     @DeleteMapping("/{slug}")
     public String delete(@PathVariable("slug") String slug) {
         pageDAO.delete(slug);
-        return "redirect:/pages";
+        return "redirect:/";
     }
 }
