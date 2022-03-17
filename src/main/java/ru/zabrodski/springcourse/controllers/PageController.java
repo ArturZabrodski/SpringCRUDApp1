@@ -14,10 +14,8 @@ import javax.validation.Valid;
 @RequestMapping()
 public class PageController {
 
-    private String url = "http://127.0.0.1:3000/";
-
     private final PageDAO pageDAO;
-    private boolean buttonClick = true;
+    private boolean buttonClick = false;
     @Autowired
     public PageController(PageDAO pageDAO) {
         this.pageDAO = pageDAO;

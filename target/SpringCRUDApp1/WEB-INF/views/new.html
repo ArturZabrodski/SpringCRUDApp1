@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
@@ -7,14 +6,15 @@
 </head>
 <body>
 
-<form th:method="POST" th:action="@{/pages}" th:object="${page}">
+<form th:method="POST" th:action="@{/}" th:object="${page}">
     <label for="title">Enter title: </label>
     <input type="text" th:field="*{title}" id="title"/>
     <div style="color:red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">title error</div>
     <br/>
     <label for="description">Enter description: </label>
     <input type="text" th:field="*{description}" id="description"/>
-    <div style="color:red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">description error</div>
+    <div style="color:red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">description error
+    </div>
     <br/>
     <label for="priority">Enter priority from 1 to 5: </label>
     <input type="number" th:field="*{priority}" id="priority"/>
