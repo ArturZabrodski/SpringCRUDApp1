@@ -11,12 +11,11 @@
     <input type="text" th:field="*{title}" id="title"/>
     <div style="color:red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">title error</div>
     <br/>
-    <label for="description">Enter description: </label>
-    <input type="text" th:field="*{description}" id="description"/>
-    <div style="color:red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">description error
-    </div>
+    <label for="content">Enter content: </label>
+    <textarea rows="15" cols="40" type="text" th:field="*{content}" id="content"></textarea>
+    <div style="color:red" th:if="${#fields.hasErrors('content')}" th:errors="*{content}">content error</div>
     <br/>
-    <label for="priority">Enter priority from 1 to 5: </label>
+    <label for="priority">Enter priority from 1 to 5:</label>
     <input type="number" th:field="*{priority}" id="priority"/>
     <div style="color:red" th:if="${#fields.hasErrors('priority')}" th:errors="*{priority}">priority error</div>
     <br/>

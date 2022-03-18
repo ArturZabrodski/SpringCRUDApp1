@@ -5,13 +5,12 @@
     <title th:text="${page.getTitle()}"></title>
 </head>
 <body>
-<h1 th:text="${page.getTitle()}">VALUE</h1>
-<meta th:text="${page.getDescription()}"/>
-<p th:text="${page.getPriority()}">VALUE</p>
+<h1 th:text="${page.getTitle()}"></h1>
+<p th:text="${page.getContent()}">
+<p/>
 <p>
     <time th:text="${page.getPublished_at()}"></time>
 </p>
-
 <hr/>
 <form th:method="PUT" th:action="@{/{slug}(slug=${page.getSlug()})}" th:object="${page}">
     <button>Publish page</button>

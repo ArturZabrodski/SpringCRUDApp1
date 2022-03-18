@@ -31,7 +31,6 @@ public class PageController {
         {
             model.addAttribute("pages", pageDAO.indexShow());
         }
-
         return "index";
     }
 
@@ -53,6 +52,7 @@ public class PageController {
             return "new";
         }
         pageDAO.save(page);
+        buttonClick = false;
         return "redirect:/";
     }
 
@@ -65,6 +65,7 @@ public class PageController {
     @GetMapping("/{slug}/publish")
     public String publish(Model model, @PathVariable("slug") String slug) {
         model.addAttribute("page", pageDAO.show(slug));
+        buttonClick = false;
         return "redirect:/";
     }
 
@@ -76,6 +77,7 @@ public class PageController {
             return "edit";
         }
         pageDAO.update(slug, page);
+        buttonClick = false;
         return "redirect:/";
     }
 
@@ -84,12 +86,14 @@ public class PageController {
                                 BindingResult bindingResult,
                                 @PathVariable("slug") String slug) {
         pageDAO.publish(slug, page);
+        buttonClick = false;
         return "redirect:/";
     }
 
     @DeleteMapping("/{slug}")
     public String delete(@PathVariable("slug") String slug) {
         pageDAO.delete(slug);
+        buttonClick = false;
         return "redirect:/";
     }
 }

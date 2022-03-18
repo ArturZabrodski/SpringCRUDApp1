@@ -5,7 +5,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import ru.zabrodski.springcourse.models.Page;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -37,16 +36,15 @@ public class PageDAO {
         jdbcTemplate.update("INSERT INTO Page VALUES(?, ?, ?, ?)",
                 page.getSlug(),
                 page.getTitle(),
-                page.getDescription(),
+                page.getContent(),
                 page.getPriority());
     }
 
-
     public void update(String slug, Page updatedPage) {
-        jdbcTemplate.update("UPDATE Page SET slug=?, title=?, description=?, priority=? WHERE slug=?",
+        jdbcTemplate.update("UPDATE Page SET slug=?, title=?, content=?, priority=? WHERE slug=?",
                 updatedPage.getSlug(),
                 updatedPage.getTitle(),
-                updatedPage.getDescription(),
+                updatedPage.getContent(),
                 updatedPage.getPriority(),
                 slug);
     }

@@ -9,21 +9,21 @@
 <div th:each="page : ${pages}">
     <menu>
         <label>
-            <li><a id="${page.getTitle()}" th:text="${page.getTitle()}"
-                   th:href="@{/{slug}(slug=${page.getSlug()})}"></a></li>
+            <li type="circle"><a th:text="${page.getTitle()}" th:href="@{/{slug}(slug=${page.getSlug()})}"></a></li>
+            <br/>
+            <meta th:text="${page.getDescription()}">
         </label>
     </menu>
 </div>
 
 <br/>
 <hr/>
-<form action="/new">
-    <button>Create new page</button>
-</form>
-<br/>
 <form action="/">
     <button>Show/Hide unpublished pages</button>
 </form>
-
+<br/>
+<form action="/new">
+    <button>Create new page</button>
+</form>
 </body>
 </html>

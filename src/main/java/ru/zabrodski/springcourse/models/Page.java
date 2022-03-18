@@ -1,12 +1,9 @@
 package ru.zabrodski.springcourse.models;
 
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.Size;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Page {
@@ -15,8 +12,9 @@ public class Page {
     @NotEmpty(message = "Title must not be empty")
     private String title;
 
-    @NotEmpty(message = "Description must not be empty")
-    @Size(min = 10, message = "Description must be at least 10 characters")
+    @NotEmpty(message = "Content must not be empty")
+    private String content;
+
     private String description;
 
     private LocalDateTime published_at;
@@ -28,9 +26,9 @@ public class Page {
     public Page() {
     }
 
-    public Page(String title, String description, int priority) {
+    public Page(String title, String content, int priority) {
         this.title = title;
-        this.description = description;
+        this.content = content;
         this.priority = priority;
     }
 
@@ -50,7 +48,20 @@ public class Page {
         this.title = title;
     }
 
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
     public String getDescription() {
+        if (getContent().length() > 100) {
+            this.description = getContent().substring(0, 100) + " ...";
+        } else {
+            this.description = getContent() + " ...";
+        }
         return description;
     }
 
