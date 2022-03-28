@@ -5,17 +5,15 @@
     <title>Content management system</title>
 </head>
 <body>
-
-<div th:each="page : ${pages}">
-    <menu>
-        <label>
-            <li type="circle"><a th:text="${page.getTitle()}" th:href="@{/{slug}(slug=${page.getSlug()})}"></a></li>
-            <br/>
+<menu>
+    <div th:each="page : ${pages}">
+        <li type="circle"><strong th:text="${page.getTitle()}"></strong>
+            <p><a th:text="@{/{slug}(slug=${page.getSlug()})}" th:href="@{/{slug}(slug=${page.getSlug()})}"></a></p>
             <meta th:text="${page.getDescription()}">
-        </label>
-    </menu>
-</div>
-
+        </li>
+        <br/><br/>
+    </div>
+</menu>
 <br/>
 <hr/>
 <form action="/">

@@ -9,10 +9,10 @@ import java.time.LocalDateTime;
 public class Page {
     private String slug;
 
-    @NotEmpty(message = "Title must not be empty")
+    @NotEmpty(message = "The title must not be empty.")
     private String title;
 
-    @NotEmpty(message = "Content must not be empty")
+    @NotEmpty(message = "The article must not be empty.")
     private String content;
 
     private String description;
@@ -57,10 +57,25 @@ public class Page {
     }
 
     public String getDescription() {
-        if (getContent().length() > 100) {
-            this.description = getContent().substring(0, 100) + " ...";
+        description = getContent();
+
+        // <p> абзацы заменяются новыми строками
+        description = description.replaceAll("<p .*?>", "\r\n");
+        // <br> <br/> заменить на новую строку
+        description = description.replaceAll("<br\\s*/?>", "\r\n");
+
+        description = description.replaceAll("\\<.*?>", "");
+        description = description.replaceAll("&zwnj", "");
+        description = description.replaceAll("&zwj;", "");
+        description = description.replaceAll("&nbsp;", " ");
+        description = description.replaceAll("&thinsp;", " ");
+        description = description.replaceAll("&ensp;", "  ");
+        description = description.replaceAll("&emsp;", "    ");
+
+        if (description.length() > 100) {
+            description = description.substring(0, 100) + " ...";
         } else {
-            this.description = getContent() + " ...";
+            description = description + " ...";
         }
         return description;
     }

@@ -6,8 +6,10 @@
 </head>
 <body>
 <h1 th:text="${page.getTitle()}"></h1>
-<p th:text="${page.getContent()}">
-<p/>
+<p th:utext="${page.getContent()}"></p>
+<br/>
+<p>Priority = <label th:text="${page.getPriority()}"></label></p>
+<br/>
 <p>
     <time th:text="${page.getPublished_at()}"></time>
 </p>
