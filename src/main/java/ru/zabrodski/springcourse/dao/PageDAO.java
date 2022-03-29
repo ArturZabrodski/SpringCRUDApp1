@@ -41,9 +41,9 @@ public class PageDAO {
     }
 
     public void update(String slug, Page updatedPage) {
-        jdbcTemplate.update("UPDATE Page SET slug=?, title=?, content=?, priority=? WHERE slug=?",
-                updatedPage.getSlug(),
+        jdbcTemplate.update("UPDATE Page SET  title=?, slug=?,content=?, priority=? WHERE slug=?",
                 updatedPage.getTitle(),
+                updatedPage.getSlug(),
                 updatedPage.getContent(),
                 updatedPage.getPriority(),
                 slug);

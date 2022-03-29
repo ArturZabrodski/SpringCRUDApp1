@@ -5,7 +5,9 @@
     <title th:text="${page.getTitle()}"></title>
 </head>
 <body>
-<h1 th:text="${page.getTitle()}"></h1>
+<!--<h1 th:text='${page.getTitle()}'></h1>-->
+<p th:utext="${page.getH1()}"></p>
+
 <p th:utext="${page.getContent()}"></p>
 <br/>
 <p>Priority = <label th:text="${page.getPriority()}"></label></p>

@@ -8,7 +8,8 @@
 <menu>
     <div th:each="page : ${pages}">
         <li type="circle"><strong th:text="${page.getTitle()}"></strong>
-            <p><a th:text="@{/{slug}(slug=${page.getSlug()})}" th:href="@{/{slug}(slug=${page.getSlug()})}"></a></p>
+<!--            <p><a th:text="@{/{slug}(slug=${page.getSlug()})}" th:href="@{/{slug}(slug=${page.getSlug()})}"></a></p>-->
+            <p><a th:text="${page.getMenu_label()}" th:href="${page.getMenu_label()}"></a></p>
             <meta th:text="${page.getDescription()}">
         </li>
         <br/><br/>
